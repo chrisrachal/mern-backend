@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: true
+    useFindAndModify: true,
+    useCreateIndex: true
 });
 
 const db = mongoose.connection;
@@ -20,8 +21,9 @@ db.on('error', (error) => {
 
 //import all of your models
 const User = require('./User');
-
+const Book = require('./Book');
 //export all the models from the file
 module.exports = {
-    User
+    User,
+    Book,
 }
